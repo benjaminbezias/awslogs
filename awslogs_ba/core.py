@@ -207,6 +207,11 @@ class AWSLogs(object):
                     message = self.query_expression.search(parsed)
                     if not isinstance(message, six.string_types):
                         message = json.dumps(message)
+
+                if 'ERROR' in message:
+                    message = self.color(message, 'red')
+                elif 'WARNING' in message:
+                    message = self.color(message, 'yellow')
                 output.append(message.rstrip())
 
                 print(' '.join(output))
@@ -285,7 +290,7 @@ class AWSLogs(object):
             date = datetime.utcnow() + timedelta(seconds=unit * amount * -1)
         else:
             try:
-                date = parse(datetime_text)
+                date = parse(datetime_text, dayfirst=True)
             except ValueError:
                 raise exceptions.UnknownDateError(datetime_text)
 

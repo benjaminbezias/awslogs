@@ -22,9 +22,8 @@ if 'bdist_wheel' not in sys.argv and sys.version_info < (2, 7):
 
 
 setup(
-    name='awslogs',
-    version='0.12.0',
-    url='https://github.com/jorgebastida/awslogs',
+    name='awslogs_ba',
+    version='0.12.4',
     license='BSD',
     author='Jorge Bastida',
     author_email='me@jorgebastida.com',
@@ -48,7 +47,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'awslogs = awslogs.bin:main',
+            'awslogs = awslogs_ba.bin:main',
         ]
     },
     zip_safe=False
